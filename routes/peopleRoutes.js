@@ -7,5 +7,6 @@ const { peopleCtrl } = require('../controllers') //all of our methods inside of 
 
 router.get('/', peopleCtrl.getPeople)
 router.post('/', peopleCtrl.createPeople)
+router.put('/:id', peopleCtrl.updatePerson)
 
 module.exports = router
