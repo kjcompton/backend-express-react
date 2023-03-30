@@ -33,11 +33,17 @@ const updatePerson = (req, res) => {
     })
 }
 
-
-
-const deletePerson = () => {
-
+const deletePerson = (req, res) => {
+    db.People.findByIdAndDelete(req.params.id)
+    .then((deletedPerson) => {
+        if(!deletedPerson){
+            res.status(400).json({Message: 'Could not delete person'})
+        } else {
+            res.status(200).json({Data: deletedPerson, Message: "Person deleted"})
+        }
+    })
 }
+
 
 module.exports = {
     getPeople,
